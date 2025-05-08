@@ -1,4 +1,4 @@
-# Proyecto de Integración Continua con Jenkins
+  # Proyecto de Integración Continua con Jenkins
 
 Este repositorio contiene un ejemplo básico de integración continua utilizando Jenkins, Git y GitHub.
 
@@ -69,3 +69,35 @@ El pipeline de Jenkins ejecuta automáticamente las siguientes etapas:
 4. **Despliegue**: Ejecuta la aplicación en el entorno local
 
 El sistema está configurado para ejecutarse automáticamente cada 5 minutos, demostrando la capacidad de integración continua.
+
+## Comandos para Ejecutar el Proyecto
+
+Para probar manualmente el proyecto, puedes utilizar los siguientes comandos de Maven:
+
+### Compilar el proyecto
+
+```bash
+mvn clean compile
+```
+
+Este comando realiza dos acciones:
+- `clean`: Elimina la carpeta `target` y todos los archivos compilados anteriormente
+- `compile`: Compila los archivos fuente Java y genera los archivos `.class` en la carpeta `target/classes`
+
+### Ejecutar las pruebas
+
+```bash
+mvn test
+```
+
+Este comando compila y ejecuta las pruebas unitarias definidas en la carpeta `src/test/java`. Verifica que la funcionalidad básica de la aplicación funcione correctamente y muestra un informe de los resultados.
+
+### Ejecutar la aplicación
+
+```bash
+mvn exec:java
+```
+
+Este comando ejecuta la aplicación Java utilizando la clase principal definida en el archivo `pom.xml`. Mostrará el mensaje "¡Hola Mundo desde Jenkins!" en la consola.
+
+Estos comandos son los mismos que se ejecutan automáticamente en el pipeline de Jenkins, pero pueden ser útiles para probar la aplicación localmente durante el desarrollo.

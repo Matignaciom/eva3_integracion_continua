@@ -8,9 +8,9 @@ public class HolaMundoTest {
     }
 
     private void assertEquals(int i, int j) {
-if (i != j) {
-    throw new AssertionError("Expected " + i + " but was " + j);
-}
-        throw new UnsupportedOperationException("Unimplemented method 'assertEquals'");
+        if (i != j) {
+            throw new AssertionError("Se esperaba " + i + " pero se obtuvo " + j);
+        }
+        throw new UnsupportedOperationException("Método 'assertEquals' no implementado");
     }
 }
