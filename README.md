@@ -2,6 +2,10 @@
 
 Este repositorio contiene un ejemplo básico de integración continua utilizando Jenkins, Git y GitHub.
 
+## Descripción del Proyecto
+
+Este proyecto implementa un sistema de integración continua que permite automatizar el proceso de compilación, prueba y despliegue de una aplicación Java básica. La aplicación consiste en un simple programa "Hola Mundo" que muestra un mensaje por consola.
+
 ## Estructura del Proyecto
 
 ```
@@ -18,96 +22,50 @@ proyecto/
 └── README.md
 ```
 
-## Contenido del Repositorio
+## Componentes Principales
 
-- `src/main/java/HolaMundo.java`: Aplicación Java básica que imprime un mensaje.
-- `src/test/java/HolaMundoTest.java`: Prueba unitaria básica.
-- `Jenkinsfile`: Configuración del pipeline declarativo para Jenkins.
-- `pom.xml`: Archivo de configuración de Maven.
+- **HolaMundo.java**: Aplicación Java que imprime "¡Hola Mundo desde Jenkins!".
+- **HolaMundoTest.java**: Prueba unitaria que verifica el funcionamiento básico.
+- **Jenkinsfile**: Define el pipeline de integración continua con etapas para descargar, compilar, probar y desplegar.
+- **pom.xml**: Archivo de configuración de Maven que gestiona dependencias y compilación.
 
-## Configuración del Proyecto
+## Proceso de Creación
 
-### 1. Crear un Repositorio en GitHub
+Este proyecto fue creado siguiendo estos pasos:
 
-1. Inicie sesión en su cuenta de GitHub o cree una nueva.
-2. Haga clic en "New" para crear un nuevo repositorio.
-3. Asigne un nombre al repositorio (por ejemplo, "jenkins-integration").
-4. Seleccione la opción "Public" para que sea accesible.
-5. Haga clic en "Create repository".
+1. **Configuración del entorno de desarrollo**:
+   - Instalación de Java JDK 8 o superior
+   - Instalación de Maven para gestión de dependencias
+   - Instalación de Git para control de versiones
+   - Instalación de Jenkins para automatización
 
-### 2. Configurar Git Localmente
+2. **Desarrollo de la aplicación**:
+   - Creación de la estructura de directorios del proyecto
+   - Implementación de la clase HolaMundo.java
+   - Desarrollo de pruebas unitarias básicas
 
-```bash
-# Inicializar el repositorio Git local
-git init
+3. **Configuración de la integración continua**:
+   - Creación del Jenkinsfile con pipeline declarativo
+   - Configuración de etapas (stages) para el proceso de CI
+   - Implementación de la programación automática (cada 5 minutos)
 
-# Agregar los archivos al staging area
-git add .
+4. **Publicación en GitHub**:
+   - Inicialización del repositorio Git local
+   - Creación del repositorio remoto en GitHub
+   - Sincronización del código con el repositorio remoto
 
-# Realizar el primer commit
-git commit -m "Commit inicial: HolaMundo y Jenkinsfile"
+5. **Configuración de Jenkins**:
+   - Creación de un nuevo job de tipo Pipeline
+   - Conexión con el repositorio de GitHub
+   - Configuración para detectar el Jenkinsfile
 
-# Configurar el repositorio remoto
-git remote add origin https://github.com/SU_USUARIO/SU_REPOSITORIO.git
+## Funcionamiento
 
-# Subir los cambios al repositorio remoto
-git push -u origin master
-```
+El pipeline de Jenkins ejecuta automáticamente las siguientes etapas:
 
-### 3. Configurar Jenkins
+1. **Descarga del código**: Obtiene la última versión desde GitHub
+2. **Compilación**: Compila el código fuente Java usando Maven
+3. **Pruebas**: Ejecuta las pruebas unitarias para verificar la funcionalidad
+4. **Despliegue**: Ejecuta la aplicación en el entorno local
 
-1. Acceda a la interfaz web de Jenkins.
-2. Haga clic en "Nueva Tarea" o "New Item".
-3. Ingrese un nombre para la tarea (por ejemplo, "ProyectoIntegracionContinua").
-4. Seleccione "Pipeline" y haga clic en "OK".
-5. En la sección de configuración:
-   - En "Pipeline", seleccione "Pipeline script from SCM".
-   - En "SCM", seleccione "Git".
-   - En "Repository URL", ingrese la URL de su repositorio GitHub.
-   - En "Branch Specifier", deje "*/master" o "*/main" según corresponda.
-   - En "Script Path", asegúrese de que diga "Jenkinsfile".
-6. Guarde la configuración.
-
-## Ejecución del Pipeline
-
-1. En la página principal de la tarea en Jenkins, haga clic en "Construir ahora" o "Build Now".
-2. Observe cómo Jenkins ejecuta los stages definidos en el Jenkinsfile:
-   - Descarga del código desde GitHub
-   - Compilación de la aplicación Java
-   - Despliegue de la aplicación en el equipo local
-
-## Programación Cron
-
-El pipeline está configurado para ejecutarse automáticamente cada 5 minutos gracias a la configuración en el Jenkinsfile:
-
-```groovy
-triggers {
-    cron('*/5 * * * *')
-}
-```
-
-## Requisitos de Instalación
-
-Para trabajar con este proyecto, necesitará tener instalado:
-
-1. **Git**: Para la gestión del repositorio.
-   - Verificar instalación: `git --version`
-   - [Descargar Git](https://git-scm.com/downloads)
-
-2. **Java**: JDK 8 o superior.
-   - Verificar instalación: `java --version`
-   - [Descargar Java](https://adoptium.net/)
-
-3. **Maven**: Para la gestión de dependencias y construcción del proyecto.
-   - Verificar instalación: `mvn --version`
-   - [Descargar Maven](https://maven.apache.org/download.cgi)
-
-4. **Jenkins**: Para la ejecución del pipeline de integración continua.
-   - [Descargar Jenkins](https://www.jenkins.io/download/)
-   - Asegúrese de que Jenkins tenga acceso a Git, Java y Maven.
-
-## Notas Importantes
-
-- Asegúrese de que todas las herramientas estén en el PATH del sistema.
-- Jenkins debe tener permisos para ejecutar comandos en el sistema.
-- Si encuentra problemas con la ejecución, revise los logs de Jenkins para identificar errores.
+El sistema está configurado para ejecutarse automáticamente cada 5 minutos, demostrando la capacidad de integración continua.
